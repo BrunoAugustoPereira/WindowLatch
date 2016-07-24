@@ -45,6 +45,7 @@ void setup() {
   // Open serial communications and wait for port to open:
   Serial.begin(9600);
   // give the Ethernet shield a second to initialize:
+  randomSeed(analogRead(0));
   delay(1000);
   Serial.println("connecting...");
 
@@ -150,7 +151,8 @@ int calcrc(char *ptr, int count)
         break;
     }
 
-
+    int randNumber = random(127);
+    data[7]=randNumber;
     Serial.print("Sensor: ");
     Serial.println(data);
     Serial.println("");
